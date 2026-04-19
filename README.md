@@ -16,6 +16,7 @@ programs, generate tracked links, and record conversions without writing HTTP co
 | `generate_tracked_link` | Create an attribution-tagged short link for a user |
 | `get_stats` | Dashboard summary: clicks, signups, commissions |
 | `record_signup` | Log a conversion event when a user signs up |
+| `list_tracked_links` | List all tracked links generated for your users |
 | `record_commission` | Log a commission event (purchase or renewal) |
 
 ---
