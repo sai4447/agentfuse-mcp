@@ -1,0 +1,38 @@
+{
+  "name": "agentfuse-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for AgentFuse -- Affiliate API middleware for AI agents",
+  "type": "module",
+  "bin": {
+    "agentfuse-mcp": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "files": [
+    "src/",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "agentfuse",
+    "affiliate",
+    "api",
+    "claude",
+    "ai-agents"
+  ],
+  "author": "AgentFuse",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.2"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.1.4",
+    "vitest": "^4.1.4"
+  }
+}
