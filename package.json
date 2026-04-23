@@ -1,10 +1,11 @@
 {
   "name": "agentfuse-mcp",
-  "version": "1.0.0",
+  "version": "1.1.3",
   "description": "MCP server for AgentFuse -- Affiliate API middleware for AI agents",
+  "mcpName": "io.github.sai4447/agentfuse-mcp",
   "type": "module",
   "bin": {
-    "agentfuse-mcp": "./src/index.js"
+    "agentfuse-mcp": "src/index.js"
   },
   "scripts": {
     "start": "node src/index.js",

@@ -87,7 +87,7 @@ node src/index.js --test
 
 **Generate a link:**
 > "Create a tracked Webflow affiliate link for user alice@example.com"
-> -> calls `generate_tracked_link({ program_slug: "webflow", user_id: "alice@example.com" })`
+> -> calls `generate_tracked_link({ program_slug: "webflow", end_user_id: "alice@example.com" })`
 
 **Check stats:**
 > "How many clicks and signups have we had this month?"

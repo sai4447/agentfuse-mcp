@@ -15,6 +15,7 @@
  */
 
 import { fileURLToPath } from "url";
+import { realpathSync } from "fs";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -44,7 +45,7 @@ export async function agentfuse(method, path, body = null) {
   const headers = {
     Authorization: `Bearer ${apiKey}`,
     "Content-Type": "application/json",
-    "User-Agent": "agentfuse-mcp/1.0.0",
+    "User-Agent": "agentfuse-mcp/1.1.2",
   };
 
   const options = { method, headers };
@@ -289,8 +290,8 @@ const TOOLS = [
         },
         commission_type: {
           type: "string",
-          description: "Type of commission. One of: 'initial', 'recurring'. Defaults to 'recurring'.",
-          enum: ["initial", "recurring"],
+          description: "Type of commission. One of: 'initial', 'recurring', 'one_time'. Defaults to 'recurring'.",
+          enum: ["initial", "recurring", "one_time"],
         },
         period_start: {
           type: "string",
@@ -456,20 +457,26 @@ export const HANDLERS = {
 // Server setup + start (only when run directly)
 // ---------------------------------------------------------------------------
 
-const isMain = process.argv[1] === fileURLToPath(import.meta.url);
+const isMain = (() => {
+  try {
+    return realpathSync(process.argv[1]) === realpathSync(fileURLToPath(import.meta.url));
+  } catch {
+    return false;
+  }
+})();
 
 /* v8 ignore start */
 
 if (isMain) {
   if (process.argv.includes("--test")) {
-    console.log("AgentFuse MCP Server v1.1.0 -- tool list:\n");
+    console.log("AgentFuse MCP Server v1.1.2 -- tool list:\n");
     TOOLS.forEach((t) => console.log(`  [${t.name}] ${t.description.split(".")[0]}.`));
     console.log(`\nTotal: ${TOOLS.length} tools`);
     process.exit(0);
   }
 
   const server = new Server(
-    { name: "agentfuse-mcp", version: "1.1.0" },
+    { name: "agentfuse-mcp", version: "1.1.2" },
     { capabilities: { tools: {} } }
   );
 
